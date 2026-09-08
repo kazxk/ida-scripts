@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# IDA databases and build output
+*.i64
+*.idb
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+tests/build/
