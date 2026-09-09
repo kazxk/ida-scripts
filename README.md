@@ -25,4 +25,14 @@ python sigmaker.py <binary> --scan sigs.json
 
 `--xref` signs the first code reference to the address and reports the operand offset, for globals and strings. `--make` takes `{name: address or symbol}` and prints `{name: signature}`. `--scan` takes `{name: signature}` and prints the address of each, or the match count if it broke.
 
+## funcdupes.py
+
+groups functions whose bytes are identical once relocations are masked out, which is what template instantiations and inlined copies look like. in the gui it lists the twins of the function under the cursor.
+
+```
+python funcdupes.py <binary> [--min 16] [--ea 0x140001000] [--rename] [--json]
+```
+
+`--min` skips functions shorter than that many bytes. `--ea` limits output to the group holding that address. `--rename` names the `sub_` members of a group after its one named member, as `<name>_dup<n>`.
+
 mit license.
