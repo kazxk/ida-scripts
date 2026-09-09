@@ -45,4 +45,14 @@ python strxrefs.py <binary> --ea 0x140001000 [0x140002000 ...] [--depth 2] [--js
 
 `--depth` is how many calls deep to follow. strings found in a callee are marked `via <callee>`.
 
+## renamemap.py
+
+applies names from a json file keyed by name, with the value an address, a signature or an existing symbol. a name already used elsewhere is reported and skipped. in the gui it asks for the file.
+
+```
+python renamemap.py <binary> names.json [--func] [--dry]
+```
+
+`--func` names the function containing the resolved address rather than the address itself, for signatures that land mid-function. `--dry` resolves and reports without renaming. the json shape matches what sigmaker `--make` prints, so a name set can be carried across builds.
+
 mit license.
