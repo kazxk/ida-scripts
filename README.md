@@ -35,4 +35,14 @@ python funcdupes.py <binary> [--min 16] [--ea 0x140001000] [--rename] [--json]
 
 `--min` skips functions shorter than that many bytes. `--ea` limits output to the group holding that address. `--rename` names the `sub_` members of a group after its one named member, as `<name>_dup<n>`.
 
+## strxrefs.py
+
+lists the strings a function references, directly and through the functions it calls. in the gui it runs on the function under the cursor.
+
+```
+python strxrefs.py <binary> --ea 0x140001000 [0x140002000 ...] [--depth 2] [--json]
+```
+
+`--depth` is how many calls deep to follow. strings found in a callee are marked `via <callee>`.
+
 mit license.
