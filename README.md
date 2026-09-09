@@ -7,8 +7,8 @@ idapython scripts for ida 9.4. each one runs from file > script file on the curs
 builds a struct from a vtable and applies it at the vtable address. member names come from demangled symbols, types from the stored or guessed prototype.
 
 ```
-python vtable2struct.py <binary> --ea 0x140001000 [--name cls] [--class-struct] [--rename-funcs] [--save]
-python vtable2struct.py <binary> --all [--class-struct] [--rename-funcs] [--save]
+python vtable2struct.py <binary> --ea 0x140001000 [--name cls] [--class-struct] [--rename-funcs]
+python vtable2struct.py <binary> --all [--class-struct] [--rename-funcs]
 ```
 
 `--all` runs over every rtti named vtable, msvc and itanium. `--class-struct` adds `<cls>` with a vtbl pointer. `--rename-funcs` renames `sub_` targets to `<cls>__vfn<n>`.

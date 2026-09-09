@@ -165,7 +165,6 @@ def cli():
     ap.add_argument("--all", action="store_true", help="every RTTI named vtable (??_7 and _ZTV)")
     ap.add_argument("--class-struct", action="store_true", help="also create <class> with a vtbl pointer")
     ap.add_argument("--rename-funcs", action="store_true", help="rename sub_ targets to <class>__vfn<n>")
-    ap.add_argument("--save", action="store_true", help="save the database")
     args = ap.parse_args()
     if args.ea is None and not args.all:
         ap.error("need --ea or --all")
@@ -178,7 +177,7 @@ def cli():
     else:
         eas = [args.ea]
     failed = [ea for ea in eas if not make_vtable_struct(ea, None if args.all else args.name, args.class_struct, args.rename_funcs)]
-    idapro.close_database(args.save)
+    idapro.close_database(True)
     sys.exit(1 if failed else 0)
 
 

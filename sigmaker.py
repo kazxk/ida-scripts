@@ -103,7 +103,6 @@ def cli():
     ap.add_argument("--xref", action="store_true", help="sign the first code reference to --ea instead")
     ap.add_argument("--make", metavar="JSON", help="{name: address or symbol} in, {name: signature} out")
     ap.add_argument("--scan", metavar="JSON", help="{name: signature} in, resolve each in this binary")
-    ap.add_argument("--save", action="store_true", help="save the database")
     args = ap.parse_args()
     if args.ea is None and not args.make and not args.scan:
         ap.error("need --ea, --make or --scan")
@@ -129,7 +128,7 @@ def cli():
             else:
                 print("[-] %s: %d matches" % (name, len(hits)))
                 failed += 1
-    idapro.close_database(args.save)
+    idapro.close_database(True)
     sys.exit(1 if failed else 0)
 
 
