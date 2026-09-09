@@ -55,4 +55,14 @@ python renamemap.py <binary> names.json [--func] [--dry]
 
 `--func` names the function containing the resolved address rather than the address itself, for signatures that land mid-function. `--dry` resolves and reports without renaming. the json shape matches what sigmaker `--make` prints, so a name set can be carried across builds.
 
+## vtfind.py
+
+finds vtables without rtti by scanning data segments for runs of function pointers whose first slot is referenced by address from code, which is how a constructor loads a vtable. it also reports other function pointer tables taken by address, so read the list with `--min`.
+
+```
+python vtfind.py <binary> [--min 2] [--unnamed] [--json]
+```
+
+`--unnamed` lists only vtables ida has no name for. feed the addresses to vtable2struct `--ea`.
+
 mit license.
